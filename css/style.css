@@ -1,0 +1,388 @@
+/*
+INFO: 
+	project: modals
+	browsers: opera/chrome/FF/ie9/safari
+	width: ??
+	columns: ?
+	markup: Sergey Kalinin 10/2014 (prozaik81-2@yandex.ru)
+	use: jq
+	desc: modals. тестовое задание
+	version 1
+	
+COLORS:
+
+
+TABLE OF CONTENTS:
+	FONTS
+	COMMON_STYLES
+	GLOBAL_layout
+	GLOBAL_blocks
+	CONTENT_blocks	
+	PLUGINS	
+*/
+
+/*************************************************************************************************************** FONTS */
+@font-face {	/* fs */
+    font-family: 'a_dominoitalic';
+    src: url('../fonts/dom_italic/dr3sruta-webfont.eot');
+    src: url('../fonts/dom_italic/dr3sruta-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dom_italic/dr3sruta-webfont.woff2') format('woff2'),
+         url('../fonts/dom_italic/dr3sruta-webfont.woff') format('woff'),
+         url('../fonts/dom_italic/dr3sruta-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*************************************************************************************************************** COMMON_STYLES */
+html, body, div, h1, h2, h3, h4, h5, h6, a, a img, p, ul, ol, li, span, fieldset , form, dl, dd, dt, table, tr, td, img, input{ 
+	border: none;
+	margin: 0; 
+	outline: none;	
+	padding: 0;
+}
+
+html{
+    height:100%;	
+	position: relative;
+}
+
+body{	
+    min-width: 960px;	
+	background: yellow;
+	
+	
+	font: 14px 'Trebuchet MS', arial, sans-serif;
+	color: #333;
+}	
+
+ul{
+	list-style-type: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus { outline: none; }
+
+textarea{
+	resize: none;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+	zoom:1;
+}
+
+.clear{
+	clear: both;
+}	
+	
+.hide{
+	display: none !important;
+}
+
+.show{
+	display: block !important;
+}
+
+.yes_visible{
+	visibility: visible !important;
+}
+
+.wrapped{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.wrapped_lite{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.raduis6{
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Safari, Chrome */
+	-khtml-border-radius: 6px; /* KHTML */
+	border-radius: 6px; /* CSS3 */	
+}
+
+.raduis10{
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Safari, Chrome */
+	-khtml-border-radius: 10px; /* KHTML */
+	border-radius: 10px; /* CSS3 */	
+}
+
+.close{
+	display: none;
+}
+
+.actions input{
+	display: none;
+}
+
+/*************************************************************************************************************** GLOBAL_layout */
+.wrap{
+	overflow: hidden;
+}	
+
+	.wrap .header{
+		background: #10171e;	
+		opacity: 0.9;
+		min-width: 960;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%; 
+		z-index: 190;
+	}
+	
+		.wrap .header .header_inner{
+			overflow: hidden;
+			min-height: 94px;
+		}
+	
+	.wrap .content{
+		padding-top: 94px;
+		
+		
+	}	
+
+			
+	
+
+/*************************************************************************************************************** CONTENT_blocks : modal */
+.modal_outer{
+	text-align: center;
+	
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: url('../images/bg_opa.png') left top repeat;
+	z-index: 200;
+}
+
+	.modal_outer .modal{
+		display: inline-block;
+		background: #fff;
+		border: 6px solid #9ec4c3;	
+		position: relative;
+		padding: 21px 41px;
+		max-width: 643px;
+		margin-top: 200px;
+	}
+	
+		.modal_outer .modal .head{
+			padding-bottom: 15px;
+		}
+		
+			.modal_outer .modal .head .h2{
+				
+				
+				text-transform: uppercase;
+				color: #133a47;
+				font: 16px 'a_dominoitalic', arial, sans-serif;
+			}
+			
+		.modal_outer .modal .info{
+			padding-bottom: 21px;
+			
+			font: 14px/17px 'Trebuchet MS', arial, sans-serif;
+		}
+		
+			.modal_outer .modal .info .text{
+				padding-bottom: 15px;
+			}
+			
+			.modal_outer .modal .info .cell{
+				text-align: left;
+				padding-bottom: 10px;
+				padding-right: 4px;
+			}		
+
+				.modal_outer .modal .info .cell .errors{
+					width: 174px;
+					display: inline-block;	
+					visibility: hidden;
+
+					color: #1f798a;	
+					font-style: italic;
+				}
+				
+				.modal_outer .modal .info .cell label{
+					width: 174px;
+					display: inline-block;
+					overflow: hidden;
+					padding-top: 10px;
+					
+					vertical-align: top;
+				}
+				
+					.modal_outer .modal .info .cell label .code{
+						float: right;
+					}
+				
+				.modal_outer .modal .info .cell textarea{
+					min-height: 50px;
+					border: none;
+				}
+				
+				.modal_outer .modal .info .cell input[type='text']{
+					height: 31px;
+					
+				}	
+
+				.modal_outer .modal .info .cell textarea,
+				.modal_outer .modal .info .cell input[type='text']{
+					-webkit-box-shadow: inset 0px 0px 14px 0px #f0f0f0;
+					-moz-box-shadow:    inset 0px 0px 14px 0px #f0f0f0;
+					box-shadow:         inset 0px 0px 14px 0px #f0f0f0;
+					width: 200px;
+					padding: 0 7px;
+					overflow: hidden;
+					border: 3px solid #fff;
+				}		
+
+				.modal_outer .modal .info .cell textarea:focus,
+				.modal_outer .modal .info .cell input:focus{		
+					border: 3px solid #d2e9e9;
+				}				
+
+		.modal_outer .modal .actions{
+		
+		}
+		
+			.modal_outer .modal .actions .button{
+				height: 35px;
+				overflow: hidden;
+				min-width: 100px;
+				padding: 0 13px;
+				background: url('../images/bg_button.png') left top repeat-x;
+				cursor: pointer;
+				margin: 0 2px;
+				
+				text-align: center;
+				color: #fff;
+				text-transform: uppercase;
+				
+			}		
+
+		.modal_outer .modal .close{
+			width: 33px;
+			height: 33px;
+			background: url('../images/btn_close.png') left top no-repeat;
+			position: absolute;
+			top: -16px;
+			right: -16px;
+			cursor: pointer;
+		}	
+
+
+.overlay{
+	background:transparent url('015/overlay.png') repeat top left;
+	position:fixed; /* с помощью этого правила фиксим и растягиваем его на весь экран*/
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	z-index:100;   /* поднимем его выше основной разметки*/
+   }
+
+.nonebox{
+	 position:fixed;
+	 top:-300px;
+	 left:35%;
+	 right:35%;
+	 background:#fff;
+	 color:#4d4d4d;
+	 padding:25px;
+	 border:5px solid #e4e4e4;
+	 width:30%;
+	 z-index:101;   /* а его выше фонового блока*/
+}		
+
+/*************************************************************************************************************** GLOBAL_blocks : header_inner */
+.header_inner{
+	
+}
+
+	.header_inner .left_header{
+		float: left;
+		width: 280px;
+		overflow: hidden;
+	}
+	
+		.header_inner .left_header .logo{
+			display: block;
+			
+		}
+		
+			.header_inner .left_header .logo img{
+				display: block;
+				cursor: pointer;
+				padding: 19px 0 0 27px;
+			}
+	
+	.header_inner .right_header{
+		float: right;
+		width: 660px;
+	}	
+
+/*************************************************************************************************************** GLOBAL_blocks : nav_top_inner */
+.nav_top_inner{
+
+}
+
+	.nav_top_inner ul{
+		overflow: hidden;
+		padding-top: 33px;
+		
+		text-align: center;
+	}
+	
+		.nav_top_inner ul li:last-child{
+			padding-right: 0;
+		}
+		
+		.nav_top_inner ul li{
+			display: inline-block;
+			padding: 0 5px;
+		}
+		
+			.nav_top_inner ul li span.active,
+			.nav_top_inner ul li span:hover{
+				background: #000;
+				
+				color: #fff;
+			}
+			
+			.nav_top_inner ul li span{
+				cursor: pointer;
+				display: block;
+				height: 31px;
+				border-radius: 15px;
+				padding: 0 15px;
+				
+				color: #999;
+				text-decoration: none;
+				text-transform: uppercase;
+				text-align: center;
+				font: 14px/31px 'cyntolab_light', sans-serif;
+			}
+
+
+
+
+
+
+
+
+/*************************************************************************************************************** PLUGINS :  */						
+					
+		
